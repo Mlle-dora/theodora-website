@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio | Web Developer</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <style>
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(9,9,10,0.7), rgba(83,84,85,0.7)), url('images/welcome_pic.jpg') center center/cover no-repeat;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .project-img-wrapper img {
+      transition: transform 0.3s;
+    }
+    .project-img-wrapper img:hover {
+      transform: scale(1.05);
+    }
+    /* Footer columns and links styling */
+    .footer-quicklinks, .footer-socials {
+      min-width: 180px;
+    }
+    .footer-quicklinks a, .footer-socials a {
+      padding: 0.3rem 0.5rem;
+      margin: 0.1rem 0;
+      font-size: 1rem;
+      border-radius: 0.3rem;
+      transition: background 0.2s, color 0.2s;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-quicklinks a:hover, .footer-socials a:hover {
+      background: rgba(255,255,255,0.08);
+      color: #ffc107;
+      text-decoration: none;
+    }
+    .footer-socials span {
+      font-size: 1rem;
+    }
+    .footer-socials i {
+      min-width: 1.5rem;
+      text-align: center;
+    }
+    @media (max-width: 767px) {
+      .hero {
+        min-height: 60vh;
+      }
+      .footer-quicklinks, .footer-socials {
+        align-items: center !important;
+        margin-bottom: 1rem;
+      }
+      .footer-quicklinks span, .footer-socials span {
+        font-size: 1.05rem;
+        margin-bottom: 0.3rem;
+        letter-spacing: 0.2px;
+      }
+      .footer-quicklinks .d-flex {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+      .footer-socials .d-flex {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center;
+        gap: 0.3rem;
+        background: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding: 0.3rem 0.1rem;
+        margin: 0 auto;
+        max-width: 100vw;
+        overflow-x: visible;
+      }
+      .footer-socials a {
+        min-width: 60px;
+        margin: 0.1rem 0.1rem !important;
+        padding: 0.35rem 0.4rem;
+        border-radius: 0.5rem;
+        background: none !important;
+        box-shadow: none !important;
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.98rem;
+        font-weight: 500;
+        color: #fff;
+        transition: background 0.2s, color 0.2s;
+      }
+      .footer-socials a i {
+        font-size: 1.15rem !important;
+        margin-right: 0.3em;
+      }
+      .footer-socials a span {
+        font-size: 0.98rem;
+        font-weight: 600;
+        letter-spacing: 0.1px;
+      }
+      .footer-quicklinks a {
+        font-size: 1rem;
+        width: auto;
+        min-width: 70px;
+        max-width: 100vw;
+        margin: 0.15rem 0.25rem !important;
+        padding: 0.45rem 0.7rem;
+        border-radius: 0.35rem;
+        background: rgba(255,255,255,0.03);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        display: inline-flex;
+      }
+      .footer-quicklinks a:hover {
+        background: #212529;
+        color: #ffc107;
+      }
+    }
+  </style>
+</head>
+<body data-bs-theme="light">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top shadow bg-white">
+    <div class="container">
+      <a class="navbar-brand text-primary fw-bold" href="#">My Portfolio</a>
+      <div class="d-flex align-items-center ms-auto">
+        <button id="toggleLang" class="btn btn-sm btn-outline-secondary ms-2">FR</button>
+        <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about" data-i18n="nav_about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects" data-i18n="nav_portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services" data-i18n="nav_services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav_contact">Contact</a></li>
+          <li class="nav-item">
+            <button id="toggleTheme" class="btn btn-sm btn-outline-primary ms-3">🌙</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Carousel -->
+  <section class="hero text-center text-white full-vh-section p-0" id="hero" style="position:relative;overflow:hidden;">
+    <div id="heroCarousel" class="carousel slide h-100 w-100" data-bs-ride="carousel" data-bs-interval="5000" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;">
+      <div class="carousel-inner h-100 w-100">
+        <div class="carousel-item active h-100 w-100">
+          <img src="images/welcome_pic.jpg" class="d-block w-100 h-100" alt="Welcome" style="object-fit:cover;filter:brightness(0.7);">
+        </div>
+        <div class="carousel-item h-100 w-100">
+          <img src="images/p1.jpg" class="d-block w-100 h-100" alt="P1" style="object-fit:cover;filter:brightness(0.7);">
+        </div>
+        <div class="carousel-item h-100 w-100">
+          <img src="images/p2.jpg" class="d-block w-100 h-100" alt="P2" style="object-fit:cover;filter:brightness(0.7);">
+        </div>
+        <div class="carousel-item h-100 w-100">
+          <img src="images/p3.jpg" class="d-block w-100 h-100" alt="P3" style="object-fit:cover;filter:brightness(0.7);">
+        </div>
+        <div class="carousel-item h-100 w-100">
+          <img src="images/p4.jpg" class="d-block w-100 h-100" alt="P4" style="object-fit:cover;filter:brightness(0.7);">
+        </div>
+      </div>
+    </div>
+    <div class="container position-relative" style="z-index:2;">
+      <h1 class="display-4 fw-bold" data-i18n="hero_title">Hi, I'm Theodora Fouda</h1>
+      <p class="lead" data-i18n="hero_subtitle">A WEB DEVELOPER</p>
+      <a href="#contact" class="btn btn-warning btn-lg mt-3" data-i18n="hero_cta">Let's Connect</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-5 full-vh-section" id="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-5 text-center">
+          <div style="display: inline-block; position: relative;">
+            <img src="images/ME 1.jpg" alt="My Photo" class="img-fluid rounded-circle shadow-lg border border-4 border-primary" style="width: 250px; height: 250px; object-fit: cover; object-position: center; background: #fff;" />
+            <span style="position: absolute; bottom: 10px; right: 10px; background: #0d6efd; color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.95rem; box-shadow: 0 2px 8px rgba(0,0,0,0.12);">It's Me!</span>
+          </div>
+        </div>
+        <div class="col-md-7 text-md-start text-center">
+          <h2 data-i18n="about_title">About Me</h2>
+          <p data-i18n="about_desc">
+            I'm a versatile Web Developer with a passion for blending technical expertise and analytical insight. I specialize in building secure, functional websites, and ensuring IT systems meet compliance and performance standards.
+          </p>
+          <a href="images/MY cv.pdf" class="btn btn-primary mt-3" download data-i18n="about_cv">Download My CV</a>
+          <div class="d-flex justify-content-between text-center mt-4">
+            <div>
+              <h3 class="counter" data-target="2">2</h3>
+              <p data-i18n="about_years">Years Experience</p>
+            </div>
+            <div>
+              <h3 class="counter" data-target="3">3</h3>
+              <p data-i18n="about_projects">Projects Completed</p>
+            </div>
+            <div>
+              <h3 class="counter" data-target="5">5</h3>
+              <p data-i18n="about_tools">Tools Mastered</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="bg-light py-5 full-vh-section" id="projects">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 data-i18n="projects_title">My Projects</h2>
+      </div>
+      <div class="row g-4 justify-content-center" id="projectGrid">
+        <!-- Design Project -->
+        <div class="project-card design">
+          <div class="project-img-wrapper">
+            <img src="images/logo.png" alt="Logo Design" />
+          </div>
+          <div class="card-body">
+            <span class="project-badge">Design</span>
+            <p class="card-text" data-i18n="project_design_desc">Professional logo and brand identity design for businesses and startups.</p>
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectDesignModal" data-i18n="read_more">Read More</button>
+          </div>
+        </div>
+        <!-- Website Project -->
+        <div class="project-card website">
+          <div class="project-img-wrapper">
+            <img src="images/WEBSITE PROJECT.PNG" alt="Website Project" />
+          </div>
+          <div class="card-body">
+            <span class="project-badge">Website</span>
+            <p class="card-text" data-i18n="project_website_desc">A modern, responsive portfolio website to showcase my work and skills.</p>
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectWebsiteModal" data-i18n="read_more">Read More</button>
+          </div>
+        </div>
+        <!-- Web App Project -->
+        <div class="project-card webapp">
+          <div class="project-img-wrapper">
+            <img src="images/STUD_HEALTHCARE_SYS.PNG" alt="Student Healthcare System" />
+          </div>
+          <div class="card-body">
+            <span class="project-badge">Web App</span>
+            <p class="card-text" data-i18n="project_webapp_desc">A web application for managing student healthcare records and appointments.</p>
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#projectWebAppModal" data-i18n="read_more">Read More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Design Modal -->
+    <div class="modal fade" id="projectDesignModal" tabindex="-1" aria-labelledby="projectDesignModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="projectDesignModalLabel">Design</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="images/logo.png" alt="Logo Design" class="img-fluid rounded mb-3" style="max-height:200px; object-fit:contain;">
+            <p>
+              I created a professional logo and brand identity for a startup, including color palette, typography, and social media kit. The design process involved client consultation, sketching, digital rendering, and final delivery in multiple formats for both print and digital use.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Website Modal -->
+    <div class="modal fade" id="projectWebsiteModal" tabindex="-1" aria-labelledby="projectWebsiteModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="projectWebsiteModalLabel">Website</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="images/WEBSITE PROJECT.PNG" alt="Portfolio Website" class="img-fluid rounded mb-3" style="max-height:200px; object-fit:contain;">
+            <p>
+              This portfolio website is designed to showcase my skills, experience, and projects. It features a modern, responsive layout, interactive elements, and easy navigation. The site is optimized for both desktop and mobile devices, ensuring a great user experience everywhere.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Web App Modal -->
+    <div class="modal fade" id="projectWebAppModal" tabindex="-1" aria-labelledby="projectWebAppModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="projectWebAppModalLabel">Web App</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="images/STUD_HEALTHCARE_SYS.PNG" alt="Student Healthcare System" class="img-fluid rounded mb-3" style="max-height:200px; object-fit:contain;">
+            <p>
+              This web application streamlines the management of student healthcare records and appointments. Features include secure login, appointment scheduling, medical record tracking, and admin dashboards. Built with modern web technologies for reliability and ease of use.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modals for Full Project Cards -->
+    <div class="modal fade" id="modalDesignCard" tabindex="-1" aria-labelledby="modalDesignCardLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalDesignCardLabel">Design Project</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="card h-100 shadow-lg border-0">
+              <div class="project-img-wrapper" style="overflow:hidden; border-radius:18px 18px 0 0;">
+                <img src="images/logo.png" class="card-img-top project-img" alt="Logo Design" style="height:220px; object-fit:cover;">
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Design</h5>
+                <p class="card-text">Professional logo and brand identity design for businesses and startups.</p>
+                <button class="btn btn-outline-primary mt-auto" data-bs-toggle="modal" data-bs-target="#projectDesignModal">Read More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalWebsiteCard" tabindex="-1" aria-labelledby="modalWebsiteCardLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalWebsiteCardLabel">Website Project</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="card h-100 shadow-lg border-0">
+              <div class="project-img-wrapper" style="overflow:hidden; border-radius:18px 18px 0 0;">
+                <img src="images/WEBSITE PROJECT.PNG" class="card-img-top project-img" alt="Website Project" style="height:220px; object-fit:cover;">
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Website</h5>
+                <p class="card-text">A modern, responsive portfolio website to showcase my work and skills.</p>
+                <button class="btn btn-outline-primary mt-auto" data-bs-toggle="modal" data-bs-target="#projectWebsiteModal">Read More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalWebAppCard" tabindex="-1" aria-labelledby="modalWebAppCardLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalWebAppCardLabel">Web App Project</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="card h-100 shadow-lg border-0">
+              <div class="project-img-wrapper" style="overflow:hidden; border-radius:18px 18px 0 0;">
+                <img src="images/STUD_HEALTHCARE_SYS.PNG" class="card-img-top project-img" alt="Student Healthcare System" style="height:220px; object-fit:cover;">
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Web App</h5>
+                <p class="card-text">A web application for managing student healthcare records and appointments.</p>
+                <button class="btn btn-outline-primary mt-auto" data-bs-toggle="modal" data-bs-target="#projectWebAppModal">Read More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-5 full-vh-section" id="services">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 data-i18n="services_title">Services Offered</h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-4 text-center">
+          <i class="bi bi-palette service-img mb-3" style="font-size: 3rem;"></i>
+          <h5 class="mt-3" data-i18n="service_web_design">WEB DESIGNING</h5>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="bi bi-brush service-img mb-3" style="font-size: 3rem;"></i>
+          <h5 class="mt-3" data-i18n="service_branding">Branding & Graphic Design</h5>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <i class="bi bi-laptop service-img mb-3" style="font-size: 3rem;"></i>
+          <h5 class="mt-3" data-i18n="service_web_app">Web App Development</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="bg-light py-5 full-vh-section" id="contact">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <div class="card shadow border-0 p-4">
+      <div class="text-center mb-4">
+        <h2 data-i18n="contact_title">Contact Me</h2>
+      </div>
+      <form action="https://formspree.io/f/mwpbdyaa" method="POST" class="row g-3" autocomplete="off">
+        <div class="col-md-6">
+          <input type="text" name="name" class="form-control" placeholder="Your Name" required data-i18n-placeholder="ph_name" />
+        </div>
+        <div class="col-md-6">
+          <input type="email" name="email" class="form-control" placeholder="Your Email" required data-i18n-placeholder="ph_email" />
+        </div>
+        <div class="col-12">
+          <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required data-i18n-placeholder="ph_message"></textarea>
+        </div>
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-primary" data-i18n="send_message">Send Message</button>
+        </div>
+      </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mini Chat Button -->
+<button id="miniChatBtn" style="position:fixed;bottom:24px;right:24px;z-index:10000;background:#1e3a8a;color:#fff;border:none;border-radius:50%;width:56px;height:56px;box-shadow:0 4px 16px rgba(30,58,138,0.18);font-size:2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+  <span>💬</span>
+</button>
+
+<!-- AI Chatbot Placeholder -->
+<div id="chatbot" class="chatbot shadow" style="display:none;">
+  <div class="chatbot-header chatbot-toggle">🤖 Fouda's Chatbot <span style="float:right;cursor:pointer;font-size:1.2rem;" id="closeChatbot">&times;</span></div>
+  <div class="chatbot-body" style="display:block;">
+    <div style="color:#1e3a8a;font-weight:600;margin-bottom:8px;">Welcome! 👋</div>
+    <div style="font-size:0.97rem;margin-bottom:10px;">Ask me about my projects, services, or how to contact me. I'm here to chat!</div>
+  </div>
+</div>
+
+  <!-- Footer Section -->
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <div class="container">
+      <div class="row w-100 justify-content-center align-items-start" style="margin:0 auto;">
+        <div class="col-md-6 d-flex flex-column align-items-center justify-content-start footer-quicklinks">
+          <span class="fw-bold" data-i18n="quick_links">Quick Links:</span>
+          <div class="d-flex flex-column align-items-center">
+            <a href="#hero" class="text-white text-decoration-none mx-1 small" data-i18n="quick_home">Home</a>
+            <a href="#about" class="text-white text-decoration-none mx-1 small" data-i18n="quick_about">About</a>
+            <a href="#projects" class="text-white text-decoration-none mx-1 small" data-i18n="quick_projects">Projects</a>
+            <a href="#services" class="text-white text-decoration-none mx-1 small" data-i18n="quick_services">Services</a>
+            <a href="#contact" class="text-white text-decoration-none mx-1 small" data-i18n="quick_contact">Contact</a>
+          </div>
+        </div>
+        <div class="col-md-6 d-flex flex-column align-items-center justify-content-start footer-socials">
+          <span class="fw-bold">Socials:</span>
+          <div class="d-flex flex-column align-items-center">
+            <a href="mailto:theodorafouda@gmail.com" class="text-white text-decoration-none mx-2" title="Email">
+              <i class="bi bi-envelope" style="font-size:1.2rem;"></i> <span class="ms-1">Email</span>
+            </a>
+            <a href="https://wa.me/673875874" target="_blank" class="text-white text-decoration-none mx-2" title="WhatsApp">
+              <i class="bi bi-whatsapp" style="font-size:1.2rem;"></i> <span class="ms-1">WhatsApp</span>
+            </a>
+            <a href="https://www.linkedin.com/in/theodorafouda" target="_blank" class="text-white text-decoration-none mx-2" title="LinkedIn">
+              <i class="bi bi-linkedin" style="font-size:1.2rem;"></i> <span class="ms-1">LinkedIn</span>
+            </a>
+            <a href="https://www.instagram.com/ms_fouda" target="_blank" class="text-white text-decoration-none mx-2" title="Instagram">
+              <i class="bi bi-instagram" style="font-size:1.2rem;"></i> <span class="ms-1">Instagram</span>
+            </a>
+            <a href="https://github.com/theodorafouda" target="_blank" class="text-white text-decoration-none mx-2" title="GitHub">
+              <i class="bi bi-github" style="font-size:1.2rem;"></i> <span class="ms-1">GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr class="bg-secondary" style="opacity:0.2;" />
+    </div>
+    <p class="mt-3 small mb-0">&copy; 2025 THEODORA FOUDA. All rights reserved.</p>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Project filtering logic
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('#filters button');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          const filter = this.getAttribute('data-filter');
+          projectCards.forEach(card => {
+            if (filter === 'all' || card.classList.contains(filter)) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+  <script>
+// Mini chat button logic
+const miniBtn = document.getElementById('miniChatBtn');
+const chatbot = document.getElementById('chatbot');
+const closeBtn = document.getElementById('closeChatbot');
+miniBtn.onclick = function() {
+  chatbot.style.display = 'block';
+  miniBtn.style.display = 'none';
+  setTimeout(() => {
+    chatbot.classList.add('active');
+    document.querySelector('.chatbot-body').style.display = 'block';
+  }, 100);
+};
+closeBtn.onclick = function() {
+  chatbot.style.display = 'none';
+  miniBtn.style.display = 'flex';
+};
+// Ensure chatbot header toggles only if not using close button
+const header = document.querySelector('.chatbot-header');
+header.onclick = function(e) {
+  if (e.target.id === 'closeChatbot') return;
+  chatbot.classList.toggle('active');
+  const body = document.querySelector('.chatbot-body');
+  if (chatbot.classList.contains('active')) body.style.display = 'block';
+  else body.style.display = 'none';
+};
+</script>
+  <script src="script.js"></script>
+<script>
+const translations = {
+  en: {
+    nav_about: "About",
+    nav_portfolio: "Portfolio",
+    nav_services: "Services",
+    nav_contact: "Contact",
+    hero_title: "Hi, I'm Theodora Fouda",
+    hero_subtitle: "A WEB DEVELOPER",
+    hero_cta: "Let's Connect",
+    about_title: "About Me",
+    about_desc: "I'm a versatile Web Developer with a passion for blending technical expertise and analytical insight. I specialize in building secure, functional websites, and ensuring IT systems meet compliance and performance standards.",
+    about_cv: "Download My CV",
+    projects_title: "My Projects",
+    services_title: "Services Offered",
+    contact_title: "Contact Me",
+    about_years: "Years Experience",
+    about_projects: "Projects Completed",
+    about_tools: "Tools Mastered",
+    project_design_title: "Design",
+    project_design_desc: "Professional logo and brand identity design for businesses and startups.",
+    project_website_title: "Website",
+    project_website_desc: "A modern, responsive portfolio website to showcase my work and skills.",
+    project_webapp_title: "Web App",
+    project_webapp_desc: "A web application for managing student healthcare records and appointments.",
+    read_more: "Read More",
+    service_web_design: "WEB DESIGNING",
+    service_branding: "Branding & Graphic Design",
+    service_web_app: "Web App Development",
+    send_message: "Send Message",
+    quick_links: "Quick Links:",
+    quick_home: "Home",
+    quick_about: "About",
+    quick_projects: "Projects",
+    quick_services: "Services",
+    quick_contact: "Contact",
+    ph_name: "Your Name",
+    ph_email: "Your Email",
+    ph_message: "Your Message"
+  },
+  fr: {
+    nav_about: "À propos",
+    nav_portfolio: "Portfolio",
+    nav_services: "Services",
+    nav_contact: "Contact",
+    hero_title: "Salut, je suis Theodora Fouda",
+    hero_subtitle: "DÉVELOPPEUSE WEB",
+    hero_cta: "Contactez-moi",
+    about_title: "À propos de moi",
+    about_desc: "Je suis une développeuse web polyvalente, passionnée par la combinaison de l'expertise technique et de l'analyse. Je me spécialise dans la création de sites web sécurisés et fonctionnels, et veille à ce que les systèmes informatiques respectent les normes de conformité et de performance.",
+    about_cv: "Télécharger mon CV",
+    projects_title: "Mes Projets",
+    services_title: "Services proposés",
+    contact_title: "Contactez-moi",
+    about_years: "Années d'expérience",
+    about_projects: "Projets terminés",
+    about_tools: "Outils maîtrisés",
+    project_design_title: "Design",
+    project_design_desc: "Création de logo professionnel et identité visuelle pour entreprises et startups.",
+    project_website_title: "Site Web",
+    project_website_desc: "Un site portfolio moderne et responsive pour présenter mon travail et mes compétences.",
+    project_webapp_title: "Application Web",
+    project_webapp_desc: "Une application web pour gérer les dossiers et rendez-vous de santé des étudiants.",
+    read_more: "En savoir plus",
+    service_web_design: "CONCEPTION WEB",
+    service_branding: "Branding & Design Graphique",
+    service_web_app: "Développement d'applications web",
+    send_message: "Envoyer le message",
+    quick_links: "Liens rapides :",
+    quick_home: "Accueil",
+    quick_about: "À propos",
+    quick_projects: "Projets",
+    quick_services: "Services",
+    quick_contact: "Contact",
+    ph_name: "Votre nom",
+    ph_email: "Votre e-mail",
+    ph_message: "Votre message"
+  },
+  es: {
+    nav_about: "Sobre mí",
+    nav_portfolio: "Portafolio",
+    nav_services: "Servicios",
+    nav_contact: "Contacto",
+    hero_title: "Hola, soy Theodora Fouda",
+    hero_subtitle: "DESARROLLADORA WEB",
+    hero_cta: "Contáctame",
+    about_title: "Sobre mí",
+    about_desc: "Soy una desarrolladora web versátil con pasión por combinar experiencia técnica y análisis. Me especializo en crear sitios web seguros y funcionales, y asegurar que los sistemas cumplan con los estándares de rendimiento y cumplimiento.",
+    about_cv: "Descargar mi CV",
+    projects_title: "Mis Proyectos",
+    services_title: "Servicios Ofrecidos",
+    contact_title: "Contáctame",
+    about_years: "Años de experiencia",
+    about_projects: "Proyectos completados",
+    about_tools: "Herramientas dominadas",
+    project_design_title: "Diseño",
+    project_design_desc: "Diseño profesional de logotipos e identidad de marca para empresas y startups.",
+    project_website_title: "Sitio Web",
+    project_website_desc: "Un portafolio moderno y responsivo para mostrar mi trabajo y habilidades.",
+    project_webapp_title: "Aplicación Web",
+    project_webapp_desc: "Una aplicación web para gestionar registros y citas de salud estudiantil.",
+    read_more: "Leer más",
+    service_web_design: "DISEÑO WEB",
+    service_branding: "Branding y Diseño Gráfico",
+    service_web_app: "Desarrollo de Apps Web",
+    send_message: "Enviar mensaje",
+    quick_links: "Enlaces rápidos:",
+    quick_home: "Inicio",
+    quick_about: "Sobre mí",
+    quick_projects: "Proyectos",
+    quick_services: "Servicios",
+    quick_contact: "Contacto",
+    ph_name: "Tu nombre",
+    ph_email: "Tu correo",
+    ph_message: "Tu mensaje"
+  },
+  de: {
+    nav_about: "Über mich",
+    nav_portfolio: "Portfolio",
+    nav_services: "Dienstleistungen",
+    nav_contact: "Kontakt",
+    hero_title: "Hallo, ich bin Theodora Fouda",
+    hero_subtitle: "WEBENTWICKLERIN",
+    hero_cta: "Kontakt aufnehmen",
+    about_title: "Über mich",
+    about_desc: "Ich bin eine vielseitige Webentwicklerin mit einer Leidenschaft für technische Expertise und analytisches Denken. Ich spezialisiere mich auf sichere, funktionale Websites und stelle sicher, dass IT-Systeme den Compliance- und Leistungsstandards entsprechen.",
+    about_cv: "Meinen Lebenslauf herunterladen",
+    projects_title: "Meine Projekte",
+    services_title: "Angebotene Dienstleistungen",
+    contact_title: "Kontaktieren Sie mich",
+    about_years: "Jahre Erfahrung",
+    about_projects: "Abgeschlossene Projekte",
+    about_tools: "Beherrschte Tools",
+    project_design_title: "Design",
+    project_design_desc: "Professionelles Logo- und Markendesign für Unternehmen und Startups.",
+    project_website_title: "Webseite",
+    project_website_desc: "Eine moderne, responsive Portfolio-Website zur Präsentation meiner Arbeit und Fähigkeiten.",
+    project_webapp_title: "Web-App",
+    project_webapp_desc: "Eine Webanwendung zur Verwaltung von Studentengesundheitsakten und Terminen.",
+    read_more: "Mehr erfahren",
+    service_web_design: "WEB DESIGN",
+    service_branding: "Branding & Grafikdesign",
+    service_web_app: "Web-App-Entwicklung",
+    send_message: "Nachricht senden",
+    quick_links: "Schnellzugriff:",
+    quick_home: "Startseite",
+    quick_about: "Über mich",
+    quick_projects: "Projekte",
+    quick_services: "Dienstleistungen",
+    quick_contact: "Kontakt",
+    ph_name: "Ihr Name",
+    ph_email: "Ihre E-Mail",
+    ph_message: "Ihre Nachricht"
+  }
+};
+
+const langOrder = ["en", "fr", "es", "de"];
+
+function setLanguage(lang) {
+  localStorage.setItem('lang', lang);
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (translations[lang][key]) {
+      el.setAttribute('placeholder', translations[lang][key]);
+    }
+  });
+  // Update toggle button text
+  const idx = langOrder.indexOf(lang);
+  document.getElementById('toggleLang').textContent = langOrder[(idx+1)%langOrder.length].toUpperCase();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const savedLang = localStorage.getItem('lang') || 'en';
+  setLanguage(savedLang);
+
+  document.getElementById('toggleLang').addEventListener('click', function() {
+    const currentLang = localStorage.getItem('lang') || 'en';
+    const idx = langOrder.indexOf(currentLang);
+    const newLang = langOrder[(idx+1)%langOrder.length];
+    setLanguage(newLang);
+  });
+});
+</script>
+  <script>
+  window.addEventListener('pageshow', function(event) {
+    // Only clear if coming from back/forward cache (persisted)
+    if (event.persisted) {
+      const form = document.querySelector('form[action="https://formspree.io/f/mwpbdyaa"]');
+      if (form) form.reset();
+    }
+  });
+  // Also clear on normal load
+  window.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form[action="https://formspree.io/f/mwpbdyaa"]');
+    if (form) form.reset();
+  });
+</script>
+</body>
+</html>
