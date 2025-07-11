@@ -4,6 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Portfolio | Web Developer</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Theodora Fouda - Web Developer Portfolio. Building modern, responsive, and user-focused websites and web apps." />
+  <meta name="keywords" content="Theodora Fouda, web developer, portfolio, responsive design, modern web, frontend, backend, designer" />
+  <meta name="author" content="Theodora Fouda" />
+  <meta property="og:title" content="Theodora Fouda | Web Developer Portfolio" />
+  <meta property="og:description" content="Building modern, responsive, and user-focused websites and web apps." />
+  <meta property="og:image" content="images/logo.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-portfolio-url.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Theodora Fouda | Web Developer Portfolio" />
+  <meta name="twitter:description" content="Building modern, responsive, and user-focused websites and web apps." />
+  <meta name="twitter:image" content="images/logo.png" />
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX'); // <-- Replace with your GA4 Measurement ID
+  </script>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
@@ -133,10 +154,10 @@
     <div class="container">
       <a class="navbar-brand modern-brand" href="#hero">
         <img src="images/ME 2.jpg" alt="Theodora Fouda" class="navbar-profile-pic">
-        Theodora Fouda
+        DORA
       </a>
-      <div class="navbar-controls d-flex align-items-center">
-        <div class="lang-selector ms-2">
+      <div class="navbar-controls d-flex align-items-center ms-auto" style="gap:0.5rem;">
+        <div class="lang-selector">
           <button id="langBtn" class="btn btn-sm modern-btn">
             <span id="currentLang">EN</span>
             <span class="lang-arrow">▼</span>
@@ -148,17 +169,8 @@
             <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
           </div>
         </div>
-        <script>
-          // Immediate initialization to ensure dropdown works on first click
-          (function() {
-            const langDropdown = document.getElementById('langDropdown');
-            if (langDropdown) {
-              langDropdown.style.display = 'none';
-            }
-          })();
-        </script>
-        <button id="toggleTheme" class="btn btn-sm modern-btn ms-2">🌙</button>
-        <button class="navbar-toggler modern-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button id="toggleTheme" class="btn btn-sm modern-btn">🌙</button>
+        <button class="navbar-toggler modern-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
@@ -762,6 +774,68 @@ document.addEventListener('DOMContentLoaded', function() {
           this.textContent = newTheme === 'dark' ? '☀️' : '🌙';
         });
       }
+    });
+  </script>
+  <!-- OpenAI Chatbot Integration (Scaffold) -->
+  <script>
+    // WARNING: Never expose your OpenAI API key in frontend code for production!
+    // Use a backend proxy to keep your key secure.
+    // Replace G-XXXXXXXXXX below with your real Google Analytics Measurement ID.
+    // Replace YOUR_OPENAI_API_KEY below with your real OpenAI API key (for testing only, not production).
+    async function sendToOpenAI(userMessage) {
+      // Replace with your backend endpoint or OpenAI API endpoint
+      const endpoint = 'https://api.openai.com/v1/chat/completions';
+      const apiKey = 'YOUR_OPENAI_API_KEY'; // <-- Replace with your OpenAI API key for testing only
+      const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      };
+      const body = JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          { role: 'system', content: 'You are a helpful assistant for Theodora Fouda portfolio website.' },
+          { role: 'user', content: userMessage }
+        ]
+      });
+      try {
+        const res = await fetch(endpoint, { method: 'POST', headers, body });
+        const data = await res.json();
+        return data.choices && data.choices[0] && data.choices[0].message.content;
+      } catch (err) {
+        return 'Sorry, there was an error connecting to the AI.';
+      }
+    }
+
+    // Example: Hook up to chatbot UI (replace with your actual UI logic)
+    document.addEventListener('DOMContentLoaded', function() {
+      const chatBody = document.querySelector('.chatbot-body');
+      if (!chatBody) return;
+      // Simple input for demo (replace with your own input box/button)
+      let input = document.createElement('input');
+      input.type = 'text';
+      input.placeholder = 'Type your message...';
+      input.style.width = '90%';
+      let sendBtn = document.createElement('button');
+      sendBtn.textContent = 'Send';
+      sendBtn.style.marginLeft = '0.5em';
+      let inputWrap = document.createElement('div');
+      inputWrap.appendChild(input);
+      inputWrap.appendChild(sendBtn);
+      chatBody.appendChild(inputWrap);
+      sendBtn.onclick = async function() {
+        const userMsg = input.value.trim();
+        if (!userMsg) return;
+        let userDiv = document.createElement('div');
+        userDiv.textContent = 'You: ' + userMsg;
+        chatBody.appendChild(userDiv);
+        input.value = '';
+        let aiDiv = document.createElement('div');
+        aiDiv.textContent = 'AI: ...';
+        chatBody.appendChild(aiDiv);
+        const aiReply = await sendToOpenAI(userMsg);
+        aiDiv.textContent = 'AI: ' + aiReply;
+        chatBody.scrollTop = chatBody.scrollHeight;
+      };
     });
   </script>
 </body>
