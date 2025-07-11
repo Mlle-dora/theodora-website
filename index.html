@@ -318,6 +318,20 @@
       margin: 0 !important;
       padding: 0 !important;
     }
+    /* Footer background black in light mode */
+    :root {
+      --footer-bg: #000;
+      --about-label-blue: #0d6efd;
+    }
+    [data-bs-theme="dark"] .footer-section {
+      background: var(--main-bg) !important;
+    }
+    [data-bs-theme="light"] .footer-section {
+      background: var(--footer-bg) !important;
+    }
+    [data-bs-theme="light"] .about-stat-label {
+      color: var(--about-label-blue) !important;
+    }
   </style>
 </head>
 <body>
@@ -325,26 +339,24 @@
   <nav class="navbar navbar-expand-lg fixed-top modern-navbar" id="mainNavbar">
     <div class="container">
       <a class="navbar-brand modern-brand d-flex align-items-center" href="#hero">
-        <span class="ms-1">Theodora Fouda</span>
+        DORA
       </a>
-      <div class="navbar-controls d-flex align-items-center">
-        <div class="d-flex flex-row gap-2 ms-auto">
-          <div class="lang-selector">
-            <button id="langBtn" class="btn btn-sm modern-btn">
-              <span id="currentLang">EN</span>
-              <span class="lang-arrow">▼</span>
-            </button>
-            <div id="langDropdown" class="lang-options">
-              <div class="lang-option" data-lang="en">🇺🇸 English</div>
-              <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
-              <div class="lang-option" data-lang="es">🇪🇸 Español</div>
-              <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
-            </div>
-          </div>
-          <button class="navbar-toggler modern-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
+      <div class="navbar-controls d-flex align-items-center ms-auto" style="gap:0.5rem;">
+        <div class="lang-selector">
+          <button id="langBtn" class="btn btn-sm modern-btn">
+            <span id="currentLang">EN</span>
+            <span class="lang-arrow">▼</span>
           </button>
+          <div id="langDropdown" class="lang-options">
+            <div class="lang-option" data-lang="en">🇺🇸 English</div>
+            <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
+            <div class="lang-option" data-lang="es">🇪🇸 Español</div>
+            <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
+          </div>
         </div>
+        <button class="navbar-toggler modern-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       </div>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-lg-center">
