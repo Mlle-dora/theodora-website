@@ -125,6 +125,70 @@
         color: #ffc107;
       }
     }
+    .navbar-profile-pic {
+      width: 38px;
+      height: 38px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 0.3rem;
+    }
+    @media (max-width: 767px) {
+      .navbar-profile-pic {
+        display: none !important;
+      }
+      .lang-selector {
+        position: relative;
+      }
+      #langDropdown.lang-options {
+        position: absolute;
+        left: 0;
+        top: 110%;
+        min-width: 120px;
+        z-index: 9999;
+        background: #222;
+        border-radius: 0.4rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        padding: 0.3rem 0;
+        display: none;
+      }
+      #langDropdown.lang-options .lang-option {
+        padding: 0.5rem 1rem;
+        color: #fff;
+        cursor: pointer;
+        font-size: 1rem;
+        white-space: nowrap;
+      }
+      #langDropdown.lang-options .lang-option:hover {
+        background: #333;
+        color: #ffc107;
+      }
+      .about-section .about-container {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center;
+      }
+      .about-photo-wrap {
+        margin-bottom: 1.2rem;
+      }
+      .about-content {
+        width: 100%;
+        padding: 0 0.5rem;
+      }
+    }
+    @media (max-width: 991px) {
+      .about-section .about-container {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center;
+      }
+      .about-photo-wrap {
+        margin-bottom: 1.2rem;
+      }
+      .about-content {
+        width: 100%;
+        padding: 0 0.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -132,7 +196,7 @@
   <nav class="navbar navbar-expand-lg fixed-top modern-navbar" id="mainNavbar">
     <div class="container">
       <a class="navbar-brand modern-brand d-flex align-items-center" href="#hero">
-        <img src="images/ME 2.jpg" alt="Theodora Fouda" class="navbar-profile-pic">
+        <img src="images/ME 2.jpg" alt="Theodora Fouda" class="navbar-profile-pic d-none d-md-block"><!-- Hide on mobile -->
         <span class="ms-1">Theodora Fouda</span>
         <div class="lang-selector ms-2">
           <button id="langBtn" class="btn btn-sm modern-btn">
@@ -415,7 +479,7 @@
         <a href="#testimonials" class="footer-link" style="color: #fff !important;" data-i18n="footer_testimonials">Testimonials</a>
         <a href="#contact" class="footer-link" style="color: #fff !important;" data-i18n="footer_contact">Contact</a>
       </nav>
-      <div class="footer-name fw-bold mb-1">THEODORA FOUDA</div>
+      <!-- Removed theodora fouda name here -->
       <div class="footer-copyright small" style="color: #fff !important;" data-i18n="footer_copyright">&copy; 2025 Theodora Fouda. All rights reserved.</div>
     </div>
   </footer>
