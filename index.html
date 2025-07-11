@@ -8,6 +8,16 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <style>
+    :root {
+      --main-bg: #fff;
+      --main-bg-dark: #181a1b;
+    }
+    [data-bs-theme="dark"] {
+      --main-bg: var(--main-bg-dark);
+    }
+    body, .about-section, .skills-section, .portfolio-section, .testimonials-section, .contact-section {
+      background: var(--main-bg) !important;
+    }
     .hero {
       min-height: 100vh;
       background: linear-gradient(135deg, rgba(9,9,10,0.7), rgba(83,84,85,0.7)), url('images/welcome_pic.jpg') center center/cover no-repeat;
