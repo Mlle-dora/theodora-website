@@ -166,13 +166,21 @@
         flex-direction: column !important;
         align-items: center !important;
         text-align: center;
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow: visible !important;
       }
       .about-photo-wrap {
         margin-bottom: 1.2rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
       }
       .about-content {
         width: 100%;
         padding: 0 0.5rem;
+        max-width: 100vw;
+        overflow: visible;
       }
       .about-stats {
         display: flex;
@@ -259,35 +267,25 @@
     <div class="container">
       <a class="navbar-brand modern-brand d-flex align-items-center" href="#hero">
         <span class="ms-1">Theodora Fouda</span>
-        <div class="lang-selector ms-2">
-          <button id="langBtn" class="btn btn-sm modern-btn">
-            <span id="currentLang">EN</span>
-            <span class="lang-arrow">▼</span>
-          </button>
-          <div id="langDropdown" class="lang-options">
-            <div class="lang-option" data-lang="en">🇺🇸 English</div>
-            <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
-            <div class="lang-option" data-lang="es">🇪🇸 Español</div>
-            <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
-          </div>
-        </div>
       </a>
       <div class="navbar-controls d-flex align-items-center">
-        <div class="lang-selector ms-2">
-          <button id="langBtn" class="btn btn-sm modern-btn">
-            <span id="currentLang">EN</span>
-            <span class="lang-arrow">▼</span>
-          </button>
-          <div id="langDropdown" class="lang-options">
-            <div class="lang-option" data-lang="en">🇺🇸 English</div>
-            <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
-            <div class="lang-option" data-lang="es">🇪🇸 Español</div>
-            <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
+        <div class="d-flex flex-row gap-2 ms-auto">
+          <div class="lang-selector">
+            <button id="langBtn" class="btn btn-sm modern-btn">
+              <span id="currentLang">EN</span>
+              <span class="lang-arrow">▼</span>
+            </button>
+            <div id="langDropdown" class="lang-options">
+              <div class="lang-option" data-lang="en">🇺🇸 English</div>
+              <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
+              <div class="lang-option" data-lang="es">🇪🇸 Español</div>
+              <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
+            </div>
           </div>
+          <button class="navbar-toggler modern-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
         </div>
-        <button class="navbar-toggler modern-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
       </div>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-lg-center">
