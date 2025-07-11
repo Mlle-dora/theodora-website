@@ -269,6 +269,28 @@
         padding: 0 0.5rem;
       }
     }
+    /* Ensure all containers, cards, and wrappers are transparent for uniform background */
+    .container,
+    .about-photo-wrap,
+    .about-content,
+    .about-stats,
+    .skills-tabs-content,
+    .nel-projects-grid,
+    .nel-project-item,
+    .testimonial-card,
+    .contact-form,
+    .project-details,
+    .project-modal .modal-content,
+    .project-modal .modal-body {
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+    /* Remove any card-like backgrounds from project and testimonial items */
+    .nel-project-item,
+    .testimonial-card {
+      background: transparent !important;
+      border: none !important;
+    }
   </style>
 </head>
 <body>
