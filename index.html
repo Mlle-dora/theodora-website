@@ -29,6 +29,10 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <style>
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
     .hero {
       min-height: 100vh;
       background: linear-gradient(135deg, rgba(9,9,10,0.7), rgba(83,84,85,0.7)), url('images/welcome_pic.jpg') center center/cover no-repeat;
@@ -71,6 +75,68 @@
     }
     .footer-socials i {
       min-width: 1.5rem;
+      text-align: center;
+    }
+    .about-section .about-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100% !important;
+      max-width: 100vw !important;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+    .about-photo-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .about-photo {
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      object-fit: cover;
+    }
+    .about-content {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 0.5rem;
+      box-sizing: border-box;
+    }
+    .about-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+    }
+    .about-stat {
+      min-width: 90px;
+      padding: 0.5rem 0.2rem;
+      background: rgba(255,255,255,0.04);
+      border-radius: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.1rem;
+    }
+    .about-stat-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffc107;
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.5px;
+    }
+    .about-stat-label {
+      font-size: 0.98rem;
+      color: #fff;
+      font-weight: 500;
+      display: block;
+      margin-top: 0.1rem;
+      white-space: normal;
       text-align: center;
     }
     @media (max-width: 767px) {
@@ -146,6 +212,31 @@
         color: #ffc107;
       }
     }
+    @media (max-width: 991px) {
+      #toggleTheme {
+        display: inline-block !important;
+      }
+      .navbar-nav .d-none.d-lg-flex {
+        display: none !important;
+      }
+      .navbar-controls #toggleTheme {
+        display: inline-block !important;
+      }
+      /* Show theme toggle in mobile menu as a nav-item */
+      .navbar-nav .nav-item.theme-mobile {
+        display: flex !important;
+        justify-content: flex-end;
+        width: 100%;
+      }
+    }
+    @media (min-width: 992px) {
+      .navbar-controls #toggleTheme {
+        display: none !important;
+      }
+      .navbar-nav .nav-item.theme-mobile {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body data-bs-theme="light">
@@ -181,6 +272,9 @@
         <li class="nav-item"><a class="nav-link modern-nav-link" href="#contact" data-i18n="nav_contact">Contact</a></li>
           <li class="nav-item d-none d-lg-flex align-items-center ms-lg-2 mt-2 mt-lg-0">
             <button id="toggleTheme" class="btn btn-sm modern-btn">🌙</button>
+          </li>
+          <li class="nav-item theme-mobile d-lg-none align-items-center mt-2 mt-lg-0">
+            <button id="toggleThemeMobile" class="btn btn-sm modern-btn">🌙</button>
           </li>
         </ul>
       </div>
@@ -758,23 +852,26 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 </script>
   <script>
-    // Theme persistence logic
+    // Ensure both theme toggles are in sync and persistent
     document.addEventListener('DOMContentLoaded', function() {
       const html = document.documentElement;
       const themeToggle = document.getElementById('toggleTheme');
+      const themeToggleMobile = document.getElementById('toggleThemeMobile');
       // Set theme from localStorage or default to light
       const savedTheme = localStorage.getItem('theme') || 'light';
       html.setAttribute('data-bs-theme', savedTheme);
-      if (themeToggle) {
-        themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-        themeToggle.addEventListener('click', function() {
-          const currentTheme = html.getAttribute('data-bs-theme');
-          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-          html.setAttribute('data-bs-theme', newTheme);
-          localStorage.setItem('theme', newTheme);
-          this.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-        });
+      if (themeToggle) themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+      if (themeToggleMobile) themeToggleMobile.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+      function toggleTheme() {
+        const currentTheme = html.getAttribute('data-bs-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-bs-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        if (themeToggle) themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        if (themeToggleMobile) themeToggleMobile.textContent = newTheme === 'dark' ? '☀️' : '🌙';
       }
+      if (themeToggle) themeToggle.onclick = toggleTheme;
+      if (themeToggleMobile) themeToggleMobile.onclick = toggleTheme;
     });
   </script>
   <!-- OpenAI Chatbot Integration (Scaffold) -->
