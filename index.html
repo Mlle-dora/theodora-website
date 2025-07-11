@@ -92,11 +92,16 @@
       justify-content: center;
       margin-bottom: 1.2rem;
     }
-    /* Use original about-photo style, do not force rounded or square */
+    /* Restore original about-photo style */
     .about-photo {
       width: 100%;
+      max-width: 320px;
       height: auto;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
       object-fit: cover;
+      margin: 0 auto;
+      display: block;
     }
     .about-content {
       width: 100%;
@@ -235,6 +240,48 @@
       .navbar-nav .nav-item.theme-mobile {
         display: none !important;
       }
+    }
+    /* Restore original color styles for light/dark mode */
+    :root {
+      --main-bg: #fff;
+      --main-text: #212529;
+      --accent: #1e3a8a;
+      --accent-light: #f8fafc;
+      --accent-dark: #111827;
+      --primary: #0d6efd;
+      --primary-dark: #0a58ca;
+      --yellow: #ffc107;
+    }
+    [data-bs-theme="dark"] {
+      --main-bg: #181a1b;
+      --main-text: #f8fafc;
+      --accent: #60a5fa;
+      --accent-light: #23272b;
+      --accent-dark: #0d1117;
+      --primary: #60a5fa;
+      --primary-dark: #2563eb;
+      --yellow: #ffc107;
+    }
+    body {
+      background: var(--main-bg);
+      color: var(--main-text);
+    }
+    .navbar, .footer-section {
+      background: var(--accent-dark);
+    }
+    .navbar .navbar-brand, .footer-link, .footer-section, .footer-section * {
+      color: var(--main-text) !important;
+    }
+    .btn-primary, .btn-outline-primary {
+      background: var(--primary);
+      border-color: var(--primary-dark);
+    }
+    .btn-primary:hover, .btn-outline-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary);
+    }
+    .about-stat-number {
+      color: var(--yellow);
     }
   </style>
 </head>
