@@ -744,5 +744,25 @@ document.addEventListener('DOMContentLoaded', function() {
     if (form) form.reset();
   });
 </script>
+  <script>
+    // Theme persistence logic
+    document.addEventListener('DOMContentLoaded', function() {
+      const html = document.documentElement;
+      const themeToggle = document.getElementById('toggleTheme');
+      // Set theme from localStorage or default to light
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      html.setAttribute('data-bs-theme', savedTheme);
+      if (themeToggle) {
+        themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        themeToggle.addEventListener('click', function() {
+          const currentTheme = html.getAttribute('data-bs-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          html.setAttribute('data-bs-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          this.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+      }
+    });
+  </script>
 </body>
 </html>
