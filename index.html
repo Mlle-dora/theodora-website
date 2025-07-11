@@ -291,6 +291,33 @@
       background: transparent !important;
       border: none !important;
     }
+    /* Remove section dividers and ensure seamless background */
+    .skills-section,
+    .testimonials-section,
+    .contact-section,
+    .footer-section {
+      background: var(--main-bg) !important;
+      border: none !important;
+      box-shadow: none !important;
+      margin-bottom: 0 !important;
+      margin-top: 0 !important;
+      padding-bottom: 0 !important;
+      padding-top: 0 !important;
+    }
+    .footer-section {
+      background: var(--main-bg) !important;
+      border-top: none !important;
+      box-shadow: none !important;
+    }
+    /* Remove any hr, border, or divider between sections */
+    hr, .section-divider, .divider, .section-separator {
+      display: none !important;
+      border: none !important;
+      background: transparent !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
   </style>
 </head>
 <body>
