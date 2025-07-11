@@ -1,95 +1,76 @@
-# 🌟 Theodora Fouda – Premium Portfolio Website
+# Theodora Fouda – Portfolio Website
 
-A modern, fully responsive one-page portfolio for **Theodora Fouda** (Data Analyst & Web Developer), featuring a premium UI, dark/light mode, language toggle, and Netlify deployment.
-
----
-
-## 🚀 Features
-
-- **Modern Navbar** with profile image, name, language toggle, and persistent dark/light mode
-- **Hero Section** with name, tagline, and call-to-action
-- **About Me** with animated counters
-- **Skills & Tools** with tooltips ("2+ years experience")
-- **Portfolio** with filterable project cards and premium modals (compact, translated, mobile-friendly)
-- **Contact Form** (Formspree integration)
-- **Fully Responsive** (no layout shake on any device)
-- **Premium UI/UX**: gradients, rounded corners, shadows, smooth transitions
-- **Dark/Light Mode**: persists user preference
-- **Language Toggle**: English/French, translates all content including modals
-- **Deployed on Netlify**
+This is a modern, responsive one-page portfolio website for Theodora Fouda, a cybersecurty-driven person and Web Developer. The site is designed to showcase professional skills, projects, and contact information, with a focus on clean design, accessibility, and ease of use.
 
 ---
 
-## 🛠️ Tech Stack
+## Features
 
-- HTML5, CSS3 (Custom + Bootstrap 5)
-- JavaScript (Vanilla, i18n for translation)
-- Font Awesome (icons)
+- Responsive layout for all devices
+- Navigation bar with profile image, name, language toggle, and theme switcher
+- Hero section with introduction and call-to-action
+- About section with animated statistics
+- Skills and tools section with experience tooltips
+- Portfolio section with filterable projects and detailed modals
+- Contact form (Formspree integration)
+- Light and dark mode with preference persistence
+- English/French language toggle (all content translatable)
+- Deployed on Netlify for fast, free hosting
+
+---
+
+## Technology Stack
+
+- HTML5, CSS3 (custom styles and Bootstrap 5)
+- JavaScript (vanilla, with translation support)
 - Google Fonts
-- Formspree (contact form)
-- Netlify (deployment)
+- Formspree (for contact form submissions)
+- Netlify (for deployment)
 
 ---
 
-## 🎨 Color Palette
-
-| Role      | Color Name      | Hex Code   |
-|-----------|-----------------|------------|
-| Primary   | Royal/Navy Blue | `#1e3a8a`  |
-| Accent    | Sky Blue        | `#3b82f6`  |
-| Highlight | Yellow          | `#facc15`  |
-| Background| White           | `#ffffff`  |
-| Text      | Dark Gray       | `#333333`  |
-
----
-
-## 📁 File Structure
+## File Structure
 
 ```
 PORTFOLIO-PROJECT/
 ├── css/
-│   └── (Bootstrap CSS files)
+│   └── Bootstrap and custom CSS files
 ├── images/
-│   ├── logo.png
-│   ├── ME 1.jpg
-│   ├── ME 2.jpg
-│   ├── MY cv.pdf
-│   ├── p1.jpg ...
-│   └── ...
+│   └── Profile, project images, and assets
 ├── js/
-│   └── (Bootstrap JS files)
+│   └── Bootstrap and custom JavaScript files
 ├── index.html
 ├── script.js
 ├── style.css
 ├── profile.jpg
-├── Me.jpg
 ├── README.md
-├── Student Portfolio Website.pdf
 └── ...
 ```
 
----
+## Getting Started
 
-## 🚦 Usage & Deployment
-
-1. **Clone the repo:**
+1. Clone the repository:
    ```bash
    git clone https://github.com/Mlle-dora/theodora-website.git
    ```
-2. **Open `index.html` in your browser** (no build step needed).
-3. **Deploy for free:**
-   - [Netlify](https://netlify.com/): Connect your GitHub repo, select the project, and deploy (no build command needed).
-   - Or use [GitHub Pages](https://pages.github.com/).
+2. Open `index.html` in your web browser. No build tools or dependencies are required.
 
----
 
-## ✨ Credits
-- Designed & developed by Theodora Fouda
-- UI/UX enhancements with help from AI (ChatGPT)
+## Deployment
 
----
+To deploy your own version:
 
-## 📬 Contact
-- Email: [your-email@example.com]
-- LinkedIn: [your-linkedin-profile]
+- **Netlify:** Connect your GitHub repository to Netlify and deploy directly. No build command is needed.
+- **GitHub Pages:** You can also use GitHub Pages for static hosting.
+
+
+## Author
+
+Designed and developed by Theodora Fouda.
+
+
+## Contact
+
+- Email: theodorafouda.com
+- LinkedIn: [my-linkedin-profile]
 
