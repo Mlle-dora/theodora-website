@@ -99,7 +99,7 @@ const translations = {
     contact_title: "Contact Me",
     contact_subtitle: "Let's work together on your next project",
     contact_name: "Your Name",
-    contact_email: "Your Email", 
+    contact_email: "Your Email",
     contact_message: "Your Message",
     contact_send: "Send Message",
     
@@ -960,21 +960,39 @@ function updateChatbotLanguage() {
 }
 
 // Theme Toggle
-const toggleTheme = document.getElementById('toggleTheme');
-toggleTheme.addEventListener('click', () => {
-  const currentTheme = document.body.getAttribute('data-bs-theme') || 'light';
-  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-  document.body.setAttribute('data-bs-theme', newTheme);
-  localStorage.setItem('theme', newTheme); // Persist theme
-});
-
-// Restore theme on page load
-window.addEventListener('DOMContentLoaded', () => {
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    document.body.setAttribute('data-bs-theme', savedTheme);
+function setupThemeToggle() {
+  // Attach event listener to all #toggleTheme buttons (in case there are multiple in DOM)
+  function attachThemeToggleListeners() {
+    document.querySelectorAll('#toggleTheme').forEach(btn => {
+      btn.onclick = function() {
+        const currentTheme = document.body.getAttribute('data-bs-theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        document.body.setAttribute('data-bs-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      };
+    });
   }
-});
+
+  // Initial setup: listeners only (theme is already set above)
+  attachThemeToggleListeners();
+
+  // Re-attach listeners if navbar is toggled (for mobile)
+  const navbar = document.getElementById('mainNavbar');
+  if (navbar) {
+    navbar.addEventListener('click', function(e) {
+      if (e.target && e.target.id === 'toggleTheme') {
+        attachThemeToggleListeners();
+      }
+    });
+  }
+
+  // Also re-attach after DOM changes (e.g. collapse/expand)
+  const navCollapse = document.getElementById('navbarNav');
+  if (navCollapse) {
+    navCollapse.addEventListener('shown.bs.collapse', attachThemeToggleListeners);
+    navCollapse.addEventListener('hidden.bs.collapse', attachThemeToggleListeners);
+  }
+}
 
 // Skills & Tools Tabs logic
 function setupSkillsTabs() {
@@ -1031,16 +1049,30 @@ function setActiveNavLink() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize language system
+// Main DOMContentLoaded
+window.addEventListener('DOMContentLoaded', function() {
+  // Language system
   const savedLang = localStorage.getItem('lang') || 'en';
   setLanguage(savedLang);
-  
-  // Add scroll event listeners
+
+  // Theme system
+  setupThemeToggle();
+
+  // Chatbot
+  setupChatbot();
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'lang') {
+      currentChatLang = localStorage.getItem('lang') || 'en';
+      updateChatbotLanguage();
+    }
+  });
+
+  // Skills tabs
+  setupSkillsTabs();
+
+  // Navbar scroll/active
   window.addEventListener('scroll', handleNavbarScroll);
   window.addEventListener('scroll', setActiveNavLink);
-  
-  // Initial call
   handleNavbarScroll();
   setActiveNavLink();
 });

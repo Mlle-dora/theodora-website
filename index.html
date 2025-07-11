@@ -127,15 +127,13 @@
     }
   </style>
 </head>
-<body data-bs-theme="light">
+<body>
   <!-- Modern Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top modern-navbar" id="mainNavbar">
     <div class="container">
-      <a class="navbar-brand modern-brand" href="#hero">
+      <a class="navbar-brand modern-brand d-flex align-items-center" href="#hero">
         <img src="images/ME 2.jpg" alt="Theodora Fouda" class="navbar-profile-pic">
-        Theodora Fouda
-      </a>
-      <div class="navbar-controls d-flex align-items-center">
+        <span class="ms-1">Theodora Fouda</span>
         <div class="lang-selector ms-2">
           <button id="langBtn" class="btn btn-sm modern-btn">
             <span id="currentLang">EN</span>
@@ -148,27 +146,22 @@
             <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
           </div>
         </div>
-        <script>
-          // Immediate initialization to ensure dropdown works on first click
-          (function() {
-            const langDropdown = document.getElementById('langDropdown');
-            if (langDropdown) {
-              langDropdown.style.display = 'none';
-            }
-          })();
-        </script>
-        <button id="toggleTheme" class="btn btn-sm modern-btn ms-2">🌙</button>
+      </a>
+      <div class="navbar-controls d-flex align-items-center">
         <button class="navbar-toggler modern-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-                  <li class="nav-item"><a class="nav-link modern-nav-link" href="#about" data-i18n="nav_about">About</a></li>
-        <li class="nav-item"><a class="nav-link modern-nav-link" href="#skills" data-i18n="nav_skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link modern-nav-link" href="#projects" data-i18n="nav_portfolio">Portfolio</a></li>
-        <li class="nav-item"><a class="nav-link modern-nav-link" href="#testimonials" data-i18n="nav_testimonials">Testimonials</a></li>
-        <li class="nav-item"><a class="nav-link modern-nav-link" href="#contact" data-i18n="nav_contact">Contact</a></li>
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link modern-nav-link" href="#about" data-i18n="nav_about">About</a></li>
+          <li class="nav-item"><a class="nav-link modern-nav-link" href="#skills" data-i18n="nav_skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link modern-nav-link" href="#projects" data-i18n="nav_portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link modern-nav-link" href="#testimonials" data-i18n="nav_testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link modern-nav-link" href="#contact" data-i18n="nav_contact">Contact</a></li>
+          <li class="nav-item d-flex align-items-center ms-lg-2 mt-2 mt-lg-0">
+            <button id="toggleTheme" class="btn btn-sm modern-btn">🌙</button>
+          </li>
         </ul>
       </div>
     </div>
@@ -670,7 +663,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load saved language
   const savedLang = localStorage.getItem('lang') || 'en';
   setLanguage(savedLang);
-  
+
   // Toggle dropdown
   if (langBtn) {
     langBtn.addEventListener('click', function(e) {
