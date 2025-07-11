@@ -92,11 +92,10 @@
       justify-content: center;
       margin-bottom: 1.2rem;
     }
+    /* Use original about-photo style, do not force rounded or square */
     .about-photo {
-      max-width: 220px;
       width: 100%;
       height: auto;
-      border-radius: 1rem;
       object-fit: cover;
     }
     .about-content {
@@ -273,8 +272,8 @@
           <li class="nav-item d-none d-lg-flex align-items-center ms-lg-2 mt-2 mt-lg-0">
             <button id="toggleTheme" class="btn btn-sm modern-btn">🌙</button>
           </li>
-          <li class="nav-item theme-mobile d-lg-none align-items-center mt-2 mt-lg-0">
-            <button id="toggleThemeMobile" class="btn btn-sm modern-btn">🌙</button>
+          <li class="nav-item d-lg-none align-items-center mt-2 mt-lg-0" style="width:100%;display:flex;justify-content:flex-end;">
+            <button id="toggleThemeMobile" class="btn btn-sm modern-btn" style="width:48px;height:48px;font-size:1.5rem;">🌙</button>
           </li>
         </ul>
       </div>
@@ -529,7 +528,7 @@
         <a href="#testimonials" class="footer-link" style="color: #fff !important;" data-i18n="footer_testimonials">Testimonials</a>
         <a href="#contact" class="footer-link" style="color: #fff !important;" data-i18n="footer_contact">Contact</a>
       </nav>
-      <div class="footer-name fw-bold mb-1">THEODORA FOUDA</div>
+      <!-- Removed THEODORA FOUDA name from footer -->
       <div class="footer-copyright small" style="color: #fff !important;" data-i18n="footer_copyright">&copy; 2025 Theodora Fouda. All rights reserved.</div>
     </div>
   </footer>
