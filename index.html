@@ -205,6 +205,8 @@
         font-weight: 500;
         display: block;
         margin-top: 0.1rem;
+        white-space: normal;
+        text-align: center;
       }
       /* Navbar burger reposition for mobile */
       .navbar-controls {
@@ -212,6 +214,9 @@
         width: 100%;
         justify-content: flex-end;
         margin-top: 0.2rem;
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
       }
       .navbar-toggler.modern-toggler {
         margin-top: 0.2rem !important;
@@ -219,6 +224,17 @@
         margin-right: 0.2rem;
         float: none;
         align-self: flex-end;
+      }
+      /* Move lang selector into navbar-controls for mobile */
+      @media (max-width: 767px) {
+        .lang-selector {
+          margin-top: 0.2rem;
+          align-self: flex-end;
+          order: 1;
+        }
+        .navbar-toggler.modern-toggler {
+          order: 2;
+        }
       }
     }
     @media (max-width: 991px) {
@@ -242,7 +258,6 @@
   <nav class="navbar navbar-expand-lg fixed-top modern-navbar" id="mainNavbar">
     <div class="container">
       <a class="navbar-brand modern-brand d-flex align-items-center" href="#hero">
-        <img src="images/ME 2.jpg" alt="Theodora Fouda" class="navbar-profile-pic d-none d-md-block"><!-- Hide on mobile -->
         <span class="ms-1">Theodora Fouda</span>
         <div class="lang-selector ms-2">
           <button id="langBtn" class="btn btn-sm modern-btn">
@@ -258,6 +273,18 @@
         </div>
       </a>
       <div class="navbar-controls d-flex align-items-center">
+        <div class="lang-selector ms-2">
+          <button id="langBtn" class="btn btn-sm modern-btn">
+            <span id="currentLang">EN</span>
+            <span class="lang-arrow">▼</span>
+          </button>
+          <div id="langDropdown" class="lang-options">
+            <div class="lang-option" data-lang="en">🇺🇸 English</div>
+            <div class="lang-option" data-lang="fr">🇫🇷 Français</div>
+            <div class="lang-option" data-lang="es">🇪🇸 Español</div>
+            <div class="lang-option" data-lang="de">🇩🇪 Deutsch</div>
+          </div>
+        </div>
         <button class="navbar-toggler modern-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
         </button>
