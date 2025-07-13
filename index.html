@@ -142,6 +142,24 @@
       border-radius: 50%;
       margin-right: 0.3rem;
     }
+    
+    /* Align navbar controls with brand name */
+    .navbar-controls {
+      align-items: center !important;
+      height: 100%;
+    }
+    
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .lang-selector, .navbar-toggler {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
     @media (max-width: 767px) {
       .navbar-profile-pic {
         display: none !important;
@@ -219,7 +237,7 @@
       }
       .about-stat-label {
         font-size: 0.98rem;
-        color: #fff;
+        color: blue;
         font-weight: 500;
         display: block;
         margin-top: 0.1rem;
@@ -228,27 +246,27 @@
       }
       /* Navbar burger reposition for mobile */
       .navbar-controls {
-        align-items: flex-start !important;
+        align-items: center !important;
         width: 100%;
         justify-content: flex-end;
-        margin-top: 0.2rem;
         display: flex;
         flex-direction: row;
         gap: 0.5rem;
+        margin-top: -1.3rem;
       }
       .navbar-toggler.modern-toggler {
-        margin-top: 0.2rem !important;
-        margin-bottom: 0.2rem;
-        margin-right: 0.2rem;
+        margin: 0;
         float: none;
-        align-self: flex-end;
+        align-self: center;
+        transform: translateY(-1rem);
       }
       /* Move lang selector into navbar-controls for mobile */
       @media (max-width: 767px) {
         .lang-selector {
-          margin-top: 0.2rem;
-          align-self: flex-end;
+          margin: 0;
+          align-self: center;
           order: 1;
+          transform: translateY(-1rem);
         }
         .navbar-toggler.modern-toggler {
           order: 2;
@@ -318,15 +336,12 @@
       margin: 0 !important;
       padding: 0 !important;
     }
-    /* Footer background black in light mode */
+    /* Footer background black in all modes */
     :root {
       --footer-bg: #000;
       --about-label-blue: #0d6efd;
     }
-    [data-bs-theme="dark"] .footer-section {
-      background: var(--main-bg) !important;
-    }
-    [data-bs-theme="light"] .footer-section {
+    .footer-section {
       background: var(--footer-bg) !important;
     }
     [data-bs-theme="light"] .about-stat-label {
