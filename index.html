@@ -297,11 +297,41 @@
     .nel-project-item,
     .testimonial-card,
     .contact-form,
-    .project-details,
-    .project-modal .modal-content,
-    .project-modal .modal-body {
+    .project-details {
       background: transparent !important;
       box-shadow: none !important;
+    }
+    
+    /* Keep modals visible with proper background */
+    .project-modal .modal-content {
+      background: var(--main-bg) !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+    }
+    
+    .project-modal .modal-body {
+      background: var(--main-bg) !important;
+    }
+    
+    /* Mobile-specific modal styling */
+    @media (max-width: 767px) {
+      .project-modal .modal-content {
+        background: #fff !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.25) !important;
+        border: 1px solid rgba(0,0,0,0.1) !important;
+      }
+      
+      .project-modal .modal-body {
+        background: #fff !important;
+      }
+      
+      [data-bs-theme="dark"] .project-modal .modal-content {
+        background: #222 !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
+      }
+      
+      [data-bs-theme="dark"] .project-modal .modal-body {
+        background: #222 !important;
+      }
     }
     /* Remove any card-like backgrounds from project and testimonial items */
     .nel-project-item,
