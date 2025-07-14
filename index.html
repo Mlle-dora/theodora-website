@@ -427,7 +427,7 @@
       /* Fix tooltip visibility on mobile */
       .skill-icon {
         position: relative;
-        z-index: 10000;
+        z-index: 1;
       }
       
       .skill-icon:hover::after,
@@ -445,11 +445,10 @@
         font-size: 0.9rem;
         font-weight: 600;
         white-space: nowrap;
-        z-index: 99999;
+        z-index: 999999;
         box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         pointer-events: none;
-        max-width: 90vw;
-        text-align: center;
+        border: 2px solid rgba(255,255,255,0.2);
       }
       
       .skill-icon:hover::before,
@@ -459,10 +458,11 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        border: 6px solid transparent;
+        border: 8px solid transparent;
         border-top-color: rgba(0,0,0,0.95);
-        z-index: 99999;
+        z-index: 999999;
         pointer-events: none;
+        margin-top: -4px;
       }
     }
     /* Remove any card-like backgrounds from project and testimonial items */
