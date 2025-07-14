@@ -424,46 +424,7 @@
         scrollbar-color: #ffc107 rgba(255,255,255,0.2);
       }
       
-      /* Fix tooltip visibility on mobile */
-      .skill-icon {
-        position: relative;
-        z-index: 1;
-      }
-      
-      .skill-icon:hover::after,
-      .skill-icon:focus::after {
-        content: attr(data-tooltip);
-        position: fixed;
-        bottom: auto;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(0,0,0,0.95);
-        color: white;
-        padding: 10px 16px;
-        border-radius: 8px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        white-space: nowrap;
-        z-index: 999999;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        pointer-events: none;
-        border: 2px solid rgba(255,255,255,0.2);
-      }
-      
-      .skill-icon:hover::before,
-      .skill-icon:focus::before {
-        content: '';
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border: 8px solid transparent;
-        border-top-color: rgba(0,0,0,0.95);
-        z-index: 999999;
-        pointer-events: none;
-        margin-top: -4px;
-      }
+
     }
     /* Remove any card-like backgrounds from project and testimonial items */
     .nel-project-item,
@@ -604,30 +565,30 @@
       <div class="skills-tabs-content">
         <div class="skills-tab-panel" data-tab-panel="frontend" style="display:block;">
           <div class="skills-icons d-flex flex-wrap justify-content-center gap-3">
-            <span class="skill-icon" tabindex="0" data-tooltip="2+ years experience"><i class="bi bi-filetype-html"></i><div>HTML5</div></span>
-            <span class="skill-icon" tabindex="0" data-tooltip="2+ years experience"><i class="bi bi-filetype-css"></i><div>CSS3</div></span>
-            <span class="skill-icon" tabindex="0" data-tooltip="2+ years experience"><i class="bi bi-filetype-js"></i><div>JavaScript</div></span>
-            <span class="skill-icon" tabindex="0" data-tooltip="2+ years experience"><i class="bi bi-bootstrap"></i><div>Bootstrap</div></span>
+            <span class="skill-icon" tabindex="0"><i class="bi bi-filetype-html"></i><div>HTML5</div></span>
+            <span class="skill-icon" tabindex="0"><i class="bi bi-filetype-css"></i><div>CSS3</div></span>
+            <span class="skill-icon" tabindex="0"><i class="bi bi-filetype-js"></i><div>JavaScript</div></span>
+            <span class="skill-icon" tabindex="0"><i class="bi bi-bootstrap"></i><div>Bootstrap</div></span>
           </div>
         </div>
         <div class="skills-tab-panel" data-tab-panel="backend" style="display:none;">
           <div class="skills-icons d-flex flex-wrap justify-content-center gap-3">
-            <span class="skill-icon" tabindex="0" data-tooltip="2+ years experience"><i class="bi bi-filetype-php"></i><div>PHP</div></span>
-            <span class="skill-icon" tabindex="0" data-tooltip="2+ years experience"><i class="bi bi-database"></i><div>MySQL</div></span>
-            <span class="skill-icon" tabindex="0" data-tooltip="2+ years experience"><i class="bi bi-diagram-3"></i><div>Django</div></span>
+            <span class="skill-icon" tabindex="0"><i class="bi bi-filetype-php"></i><div>PHP</div></span>
+            <span class="skill-icon" tabindex="0"><i class="bi bi-database"></i><div>MySQL</div></span>
+            <span class="skill-icon" tabindex="0"><i class="bi bi-diagram-3"></i><div>Django</div></span>
           </div>
         </div>
         <div class="skills-tab-panel" data-tab-panel="design" style="display:none;">
           <div class="skills-icons d-flex flex-wrap justify-content-center gap-3">
-            <span class="skill-icon" tabindex="0" data-tooltip="2+ years experience"><i class="bi bi-brush"></i><div>Photoshop</div></span>
-            <span class="skill-icon" tabindex="0" data-tooltip="2+ years experience"><i class="bi bi-palette"></i><div>Illustrator</div></span>
-            <span class="skill-icon" tabindex="0" data-tooltip="2+ years experience"><i class="bi bi-easel"></i><div>Canva</div></span>
+            <span class="skill-icon" tabindex="0"><i class="bi bi-brush"></i><div>Photoshop</div></span>
+            <span class="skill-icon" tabindex="0"><i class="bi bi-palette"></i><div>Illustrator</div></span>
+            <span class="skill-icon" tabindex="0"><i class="bi bi-easel"></i><div>Canva</div></span>
           </div>
         </div>
         <div class="skills-tab-panel" data-tab-panel="tools" style="display:none;">
           <div class="skills-icons d-flex flex-wrap justify-content-center gap-3">
-            <span class="skill-icon" tabindex="0" data-tooltip="2+ years experience"><i class="bi bi-git"></i><div>Git</div></span>
-            <span class="skill-icon" tabindex="0" data-tooltip="2+ years experience"><i class="bi bi-terminal"></i><div>VS Code</div></span>
+            <span class="skill-icon" tabindex="0"><i class="bi bi-git"></i><div>Git</div></span>
+            <span class="skill-icon" tabindex="0"><i class="bi bi-terminal"></i><div>VS Code</div></span>
           </div>
         </div>
       </div>
